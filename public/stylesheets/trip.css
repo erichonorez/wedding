@@ -1,0 +1,9 @@
+.card {
+    margin-top: 25px;
+}
+.card-img-top {
+    max-height: 350px;
+}
+#gallery {
+    padding: 0px;
+}
