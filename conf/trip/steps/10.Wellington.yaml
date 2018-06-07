@@ -1,0 +1,28 @@
+------
+name: Wellington
+slug: wellington
+order: 10
+position:
+ - lat: -41.28664
+ - lng: 174.77557
+pictures:
+ - wellington_1.jpg
+ - wellington_2.jpg
+ - wellington_3.jpg
+ - wellington_4.jpg
+ - wellington_6.jpg
+ - wellington_7.jpg
+ - wellington_8.jpg
+------
+
+Située sur la pointe sud-ouest de l'île du Nord, dans le détroit de Cook, Wellington est la capitale constitutionnelle et culturelle de la Nouvelle-Zélande, surnommée «la petite capitale la plus cool du monde». Avec son architecture diversifiée, ses musées de classe mondiale, ses attractions culturelles et ses restaurants primés, Wellington est une destination populaire pour les voyageurs locaux et internationaux. En raison de son emplacement dans les «Roaring Forties» la ville connaît sa juste part de vent et par conséquent, la voile est une activité populaire ici - avec des charters offrant aux visiteurs l'expérience d'une croisière détendue avec de belles vues sur la ville et ses environs baies. Liens utiles: https://www.wellingtonnz.com/
+
+[I'm an inline-style link](https://www.google.com)
+
+### Activités prévues
+
+| Tables        | Are           | Cool  |
+| --------------|---------------| ------|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |

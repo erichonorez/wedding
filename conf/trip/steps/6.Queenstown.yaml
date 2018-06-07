@@ -1,0 +1,27 @@
+------
+name: Queenstown
+slug: queenstown
+order: 6
+position:
+ - lat: -45.031162
+ - lng: 168.662643
+pictures:
+ - queenstown_1.jpg
+ - queenstown_3.jpg
+ - queenstown_4.jpg
+ - queenstown_5.jpg
+ - queenstown_6.jpg
+ - queenstown_7.jpg
+------
+
+Queenstown est situé sur les rives du lac Wakatipu et offre une vue imprenable sur les sommets alpins environnants. Considéré par beaucoup comme l'une des capitales mondiales de l'aventure, il offre aux visiteurs un large choix d'activités de stimulation de l'adrénaline, comme le saut à l'élastique, le rafting, la tyrolienne, le ski et le parachutisme. Queenstown possède également un bar animé et un restaurant, et pour ceux qui préfèrent les choses plus calmes dans la vie, il y a des vignobles, des terrains de golf, des spas et des centres de bien-être.
+
+[I'm an inline-style link](https://www.google.com)
+
+### Activités prévues
+
+| Tables        | Are           | Cool  |
+| --------------|---------------| ------|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |

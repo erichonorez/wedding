@@ -3,22 +3,21 @@ package controllers
 import javax.inject._
 
 import play.api.mvc._
+import services.TripRepository
 
-import models._
-
-class TripController @Inject()(cc: ControllerComponents)(implicit assetsFinder: AssetsFinder)
+class TripController @Inject()(tripRepository: TripRepository, cc: ControllerComponents)(implicit assetsFinder: AssetsFinder)
  extends AbstractController(cc) {
 
     def index = Action {
-        val trip = Trip(List(
+      val trip = tripRepository.get.get
+        /*val trip = Trip(List(
             Step(
                 "Christchurch",
                 Location(
                     -43.525650,
                     172.639847
-                ), 
-                "Christchurch est la plus grande ville de l’île du sud. De nombreux monuments témoignent du passé colonial britannique de celle-ci. Mais Christchurch c’est avant tout - comme son nom l’indique - une très belle cathédrale mais aussi Cathedral Square, l’esplanade piétonne, le cœur battant de la ville. Sans oublier la ville moderne : de nombreux petits cafés, un jardin botanique etc. La ville de Christchurch vous promet un mélange éclectique d'élégance historique et de culture contemporaine. Point de passage vers l'île du Sud, c'est un incontournable de tout itinéraire. Décrite par Lonely Planet comme une \"ville dynamique en pleine transition, associant résilience et créativité\", Christchurch déborde d'énergie où que vous alliez. La ville a su rebondir suite aux tremblements de terre de Canterbury de 2010 et 2011, avec de nouvelles attractions innovantes, ainsi que quelques classiques. Visitez le Re Start Container Mall, la cathédrale transitoire en carton et quelques-uns des nombreux restaurants et bars temporaires. Les galeries d'art contemporain, les boutiques et les marchés de plein air contribuent à l'ambiance créative de Christchurch.",
-                List(),
+                ),
+                renderer.render(markdown),
                 List(
                     "christchurch_2.jpg",
                     "christchurch_4.jpg",
@@ -34,7 +33,6 @@ class TripController @Inject()(cc: ControllerComponents)(implicit assetsFinder: 
                     170.5166646
                 ),
                 "Le village de Tekapo est une station balnéaire pittoresque au bord du lac au coeur du pays de Mackenzie dans l'île du sud de la Nouvelle-Zélande. Il tire son nom du superbe lac Tekapo, l'un des lacs du sud des Alpes du Sud. Entouré par certains des plus hauts sommets de Nouvelle-Zélande, y compris Mt Cook, et loin de la lumière des lumières de la ville, le célèbre ciel sans nuages du lac Tekapo en fait l'un des meilleurs endroits dans l'hémisphère sud pour voir le ciel nocturne. Le statut de patrimoine mondial est actuellement recherché pour l'ensemble de la zone en tant que première zone de préservation des étoiles. Le petit village en plein essor de Tekabo est idéalement situé à l'extrémité sud du lac, et est centré autour d'une belle rangée de cafés tentants et de boutiques de cadeaux pittoresques. Avec ses magnifiques vues dégagées sur les eaux turquoises et les collines enneigées, il n'est pas étonnant que cette petite ville devienne rapidement l'une des destinations naturelles préférées de la Nouvelle-Zélande.",
-                List(),
                 List(
                     "lake_tekapo_1.jpg",
                     "lake_tekapo_2.jpg",
@@ -49,7 +47,6 @@ class TripController @Inject()(cc: ControllerComponents)(implicit assetsFinder: 
                     170.08999964
                 ),
                 "Aussi connu sous le nom de parc national d'Aoraki, cette réserve de 700 kilomètres carrés abrite 19 montagnes qui dépassent les 3000m, y compris le plus haut sommet de l'Australasie - le Mt. 3754m. Aoraki. Le paysage incroyable fait partie du patrimoine mondial du sud-ouest de la Nouvelle-Zélande et peut être exploré par l'escalade, la randonnée, le ski et même des excursions en vol panoramique. Ne pas manquer le glacier Tasman; À 27 km de long et 3 km de large, c'est le plus grand glacier du pays - même si ces dernières années, il a malheureusement fondu rapidement.",
-                List(),
                 List(
                     "mount_cook_2.jpg",
                     "mount_cook_3.jpg",
@@ -59,7 +56,7 @@ class TripController @Inject()(cc: ControllerComponents)(implicit assetsFinder: 
                     "mount_cook_7.jpg"
                 )
             )
-        ))
+        ))*/
                 /* {
                             name: "Mount Cook National Park",
                             location: {
@@ -256,4 +253,9 @@ class TripController @Inject()(cc: ControllerComponents)(implicit assetsFinder: 
         Ok(views.html.trip.index(trip))
     }
 
+    def step(slug: String) = Action { request =>
+      val trip = tripRepository.get.get
+      val step = trip.steps.find(s => s.slug.equals(slug)).get
+      Ok(views.html.trip.step(step, request.headers.get("referrer").getOrElse(routes.TripController.index().url)))
+    }
 }

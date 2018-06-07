@@ -1,0 +1,26 @@
+------
+name: Christchurch
+slug: christchurch
+order: 1
+position:
+ - lat: -43.525650
+ - lng: 172.639847
+pictures:
+ - christchurch_2.jpg
+ - christchurch_4.jpg
+ - christchurch_5.jpg
+ - christchurch_6.jpg
+ - christchurch_7.jpg
+------
+
+Christchurch est la plus grande ville de l’île du sud. De nombreux monuments témoignent du passé colonial britannique de celle-ci. Mais Christchurch c’est avant tout - comme son nom l’indique - une très belle cathédrale mais aussi Cathedral Square, l’esplanade piétonne, le cœur battant de la ville. Sans oublier la ville moderne : de nombreux petits cafés, un jardin botanique etc. La ville de Christchurch vous promet un mélange éclectique d'élégance historique et de culture contemporaine. Point de passage vers l'île du Sud, c'est un incontournable de tout itinéraire. Décrite par Lonely Planet comme une "ville dynamique en pleine transition, associant résilience et créativité", Christchurch déborde d'énergie où que vous alliez. La ville a su rebondir suite aux tremblements de terre de Canterbury de 2010 et 2011, avec de nouvelles attractions innovantes, ainsi que quelques classiques. Visitez le Re Start Container Mall, la cathédrale transitoire en carton et quelques-uns des nombreux restaurants et bars temporaires. Les galeries d'art contemporain, les boutiques et les marchés de plein air contribuent à l'ambiance créative de Christchurch.
+
+[I'm an inline-style link](https://www.google.com)
+
+### Activités prévues
+
+| Tables        | Are           | Cool  |
+| --------------|---------------| ------|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |

@@ -1,0 +1,25 @@
+------
+name: Lake Te Anau
+slug: lake-te-anau
+order: 5
+position:
+ - lat: -45.1999992
+ - lng: 167.7999968
+pictures:
+ - lake_te_anau_1.jpg
+ - lake_te_anau_2.jpg
+ - lake_te_anau_3.jpg
+ - lake_te_anau_4.jpg
+------
+
+Le lac Te Anau est situé dans le sud-ouest de l'île du sud de la Nouvelle-Zélande et est le deuxième plus grand lac du comté, couvrant une superficie de 344 kilomètres carrés. Autrefois résidence des tribus maories, les rives du lac rencontrent les montagnes couvertes de forêts du parc national du Fiordland à l'ouest et les collines ondoyantes à l'est. Les activités dans la région comprennent la pêche, la chasse au cerf, les sports nautiques et la possibilité d'explorer deux des sentiers de randonnée les plus connus du pays; la piste Milford et la piste Kepler.
+
+[I'm an inline-style link](https://www.google.com)
+
+### Activités prévues
+
+| Tables        | Are           | Cool  |
+| --------------|---------------| ------|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |

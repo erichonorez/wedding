@@ -1,0 +1,27 @@
+------
+name: Rotorua
+slug: rotorua
+order: 12
+position:
+ - lat: -38.4666648,
+ - lng: 176.6999972
+pictures:
+ - rotorua_1.jpg
+ - rotorua_2.jpg
+ - rotorua_3.jpg
+ - rotorua_4.jpg
+ - rotorua_6.jpg
+ - rotorua_7.jpg
+------
+
+Rotorua est le lieu où l'on observe le plus clairement les forces turbulentes qui ont créé la Nouvelle-Zélande. Cette ville, située sur le plateau volcanique, est l'un des sites géothermiques les plus actifs au monde, et est bâtie directement sur la Ceinture de feu du Pacifique. Rotorua est aussi la terre ancestrale des Te Arawa , un peuple arrivé ici il y a plus de 600 ans, et dont la présence offre de nombreuses expériences culturelles aux visiteurs. Essayez un festin de hangi (cuit dans le sol fumant), suivez une visite d'un authentique village maori pré-européen, ou offrez-vous un agréable soin thermal. Si vous aimez l'aventure, Rotorua possède de nombreuses attractions pour faire monter l'adrénaline : tout ce que vous pouvez imaginer, du saut en parachute à la luge, en passant par le zorbing (qui consiste à dévaler une pente dans une bulle en plastique), et l'un des meilleurs circuits de VTT de Nouvelle-Zélande. C'est aussi une grande région de pêche à la truite, dans les lacs et les rivières affluentes, et si vous n'avez pas de chance là-bas, vous pouvez toujours aller admirer (mais pas les attraper, hélas) les énormes truites des sources Rainbow et Fairy. Avec son aéroport international, Rotorua est aussi la porte vers les stations de l'Île du Nord pour profiter au mieux du ski et du snowboard sur le Mt Ruapehu en hiver.
+
+[I'm an inline-style link](https://www.google.com)
+
+### Activités prévues
+
+| Tables        | Are           | Cool  |
+| --------------|---------------| ------|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |

@@ -1,0 +1,41 @@
+@(step: models.Step, referrer: String)(implicit assetsFinder: AssetsFinder)
+
+@main("Hello", assetsFinder) {
+
+<div id="app" class="container content">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title float-left">@step.name</h2> <a href="@referrer" class="back-btn btn btn-primary float-right"><i class="fas fa-chevron-left"></i> Retourner à la description</a>
+                </div>
+                <div class="card-body">
+
+                <h3>Gallerie</h3>
+                <div class="text-center">
+                    <img src="https://maps.googleapis.com/maps/api/staticmap?center=@step.name&zoom=5&size=600x300&maptype=roadmap&markers=color:red%7C@step.location.lat,@step.location.lng&key=AIzaSyBxkog24mVKJ0_VO9qpRcPSxLy2yGX8G_I" alt="Card image cap">
+                    @for(picture <- step.pictures) {
+                    <div class="img">
+                        <a id="@picture">
+                            <img src="@assetsFinder.path("images/" + picture)">
+                        </a>
+                    </div>
+                    }
+                </div>
+
+            </div>
+            <div class="card-footer">
+                <a href="@referrer" class="back-btn btn btn-primary float-right"><i class="fas fa-chevron-left"></i> Retourner à la description</a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+}
+
+<script>
+    $('.back-btn').click(function(event) {
+        event.preventDefault();
+        window.history.back();
+    });
+</script>

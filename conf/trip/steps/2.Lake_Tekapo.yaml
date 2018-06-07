@@ -1,0 +1,25 @@
+------
+name: Lake Tekapo
+slug: lake-tekapo
+order: 2
+position:
+ - lat: -43.8833298
+ - lng: 170.5166646
+pictures:
+ - lake_tekapo_1.jpg
+ - lake_tekapo_2.jpg
+ - lake_tekapo_3.jpg
+ - lake_tekapo_4.jpg
+------
+
+Le village de Tekapo est une station balnéaire pittoresque au bord du lac au coeur du pays de Mackenzie dans l'île du sud de la Nouvelle-Zélande. Il tire son nom du superbe lac Tekapo, l'un des lacs du sud des Alpes du Sud. Entouré par certains des plus hauts sommets de Nouvelle-Zélande, y compris Mt Cook, et loin de la lumière des lumières de la ville, le célèbre ciel sans nuages du lac Tekapo en fait l'un des meilleurs endroits dans l'hémisphère sud pour voir le ciel nocturne. Le statut de patrimoine mondial est actuellement recherché pour l'ensemble de la zone en tant que première zone de préservation des étoiles. Le petit village en plein essor de Tekabo est idéalement situé à l'extrémité sud du lac, et est centré autour d'une belle rangée de cafés tentants et de boutiques de cadeaux pittoresques. Avec ses magnifiques vues dégagées sur les eaux turquoises et les collines enneigées, il n'est pas étonnant que cette petite ville devienne rapidement l'une des destinations naturelles préférées de la Nouvelle-Zélande.
+
+[I'm an inline-style link](https://www.google.com)
+
+### Activités prévues
+
+| Tables        | Are           | Cool  |
+| --------------|---------------| ------|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |

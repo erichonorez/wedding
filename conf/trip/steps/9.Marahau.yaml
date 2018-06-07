@@ -1,0 +1,25 @@
+------
+name: Marahau
+slug: marahau
+order: 9
+position:
+ - lat: -41.0
+ - lng: 173.0
+pictures:
+ - punakaiki_1.jpg
+ - punakaiki_2.jpg
+ - punakaiki_3.jpg
+ - punakaiki_4.jpg
+------
+
+Le parc national Abel Tasman est situé au nord de l’île. Les plages y sont superbes (celle de Totaranui notamment), parfois adossées à des collines boisées, parfois à des forets primitives. La Coast Track, le sentier du littoral, est très fréquenté l’été. Le kayak reste cependant la meilleure façon d’appréhender les côtes de l’Abel Tasman National Park, pour y voir les otaries, les manchots et les dauphins.
+
+[I'm an inline-style link](https://www.google.com)
+
+### Activités prévues
+
+| Tables        | Are           | Cool  |
+| --------------|---------------| ------|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |

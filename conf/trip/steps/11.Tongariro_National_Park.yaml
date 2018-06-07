@@ -1,0 +1,25 @@
+------
+name: Tongariro National Park
+slug: tongariro-national-park
+order: 11
+position:
+ - lat: -39.272709,
+ - lng: 175.5802278
+pictures:
+ - tongariro_1.jpg
+ - tongariro_2.jpg
+ - tongariro_3.jpg
+ - tongariro_5.jpg
+------
+
+Tongariro est le plus ancien parc national de Nouvelle-Zélande, situé au cœur de l'île du Nord. Il comprend trois volcans actifs - le mont Ngauruhoe, le mont Tongariro et le mont Ruapehu (l'un des volcans les plus actifs au monde) - qui ont une grande importance pour le peuple maori local. La beauté brute de l'environnement attire un grand nombre de touristes, et c'est aussi la raison pour laquelle une grande partie de la trilogie du film Le Seigneur des Anneaux a été filmée ici. Il y a des activités à apprécier par tout le monde ici, des croisières scéniques au rafting, à la randonnée, à l'escalade et au ski en hiver.
+
+[I'm an inline-style link](https://www.google.com)
+
+### Activités prévues
+
+| Tables        | Are           | Cool  |
+| --------------|---------------| ------|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
