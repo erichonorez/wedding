@@ -1,6 +1,8 @@
 @(trip: models.Trip)(implicit assetsFinder: AssetsFinder)
 
-@main("Hello", assetsFinder) {
+@main("Hello", assetsFinder) { } {
+    @partials.menu()
+
     <section class="jumbotron text-center">
         <div class="container">
         <h1 class="jumbotron-heading">Aidez-nous à voyager!</h1>
@@ -55,4 +57,4 @@
             }
         ];
     </script>
-}
+} { }

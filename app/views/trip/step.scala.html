@@ -1,6 +1,6 @@
 @(step: models.Step, referrer: String)(implicit assetsFinder: AssetsFinder)
 
-@main("Hello", assetsFinder) {
+@main("Hello", assetsFinder) { } {
 
 <div id="app" class="container content">
     <div class="row">
@@ -31,11 +31,11 @@
     </div>
 </div>
 </div>
+} {
+    <script>
+        $('.back-btn').click(function(event) {
+            event.preventDefault();
+            window.history.back();
+        });
+    </script>
 }
-
-<script>
-    $('.back-btn').click(function(event) {
-        event.preventDefault();
-        window.history.back();
-    });
-</script>

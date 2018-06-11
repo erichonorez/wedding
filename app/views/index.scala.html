@@ -2,7 +2,7 @@
  * This template takes a two arguments, a String containing a
  * message to display and an AssetsFinder to locate static assets.
  *@
-@(message: String)(implicit assetsFinder: AssetsFinder)
+@(when: Int)(implicit assetsFinder: AssetsFinder)
 
 @*
  * Call the `main` template with two arguments. The first
@@ -10,11 +10,163 @@
  * argument is an `Html` object containing the body of the page.
  *@
 @main("Welcome to Play", assetsFinder) {
+<style>
+    /*
+ * Globals
+ */
 
-    @*
-     * Get an `Html` object by calling the built-in Play welcome
-     * template and passing a `String` message.
-     *@
-    @welcome(message, style = "scala")
-
+/* Links */
+a,
+a:focus,
+a:hover {
+  color: #fff;
 }
+
+/* Custom default button */
+.btn-secondary,
+.btn-secondary:hover,
+.btn-secondary:focus {
+  color: #333;
+  text-shadow: none; /* Prevent inheritance from `body` */
+  background-color: #fff;
+  border: .05rem solid #fff;
+}
+
+
+/*
+ * Base structure
+ */
+
+html,
+body {
+  height: 100%;
+  background-color: #fff;
+}
+
+body {
+  display: -ms-flexbox;
+  display: flex;
+  color: #d49b65;
+  text-shadow: 0 .05rem .1rem #e5c3a3;
+  box-shadow: inset 0 0 5rem #f6ebe0;
+}
+
+a, a:hover, a:visited {
+    color: #268a56;
+    text-shadow: 0 .05rem .1rem #c1eed7;
+}
+
+.cover-container {
+  max-width: 42em;
+}
+
+
+/*
+ * Header
+ */
+.masthead {
+  margin-bottom: 2rem;
+}
+
+.masthead-brand {
+  margin-bottom: 0;
+}
+
+.nav-masthead .nav-link {
+  padding: .25rem 0;
+  font-weight: 700;
+  color: #268a56;
+  background-color: transparent;
+  border-bottom: .25rem solid transparent;
+}
+
+.nav-masthead .nav-link:hover,
+.nav-masthead .nav-link:focus {
+  border-bottom-color: rgba(255, 255, 255, .25);
+}
+
+.nav-masthead .nav-link + .nav-link {
+  margin-left: 1rem;
+}
+
+.nav-masthead .active {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+@@media (min-width: 48em) {
+  .masthead-brand {
+    float: left;
+  }
+  .nav-masthead {
+    float: right;
+  }
+}
+
+
+/*
+ * Cover
+ */
+.cover {
+  padding: 0 1.5rem;
+}
+.cover .btn-lg {
+  padding: .75rem 1.25rem;
+  font-weight: 700;
+}
+
+
+/*
+ * Footer
+ */
+.mastfoot {
+  color: rgba(255, 255, 255, .5);
+}
+
+.btn-secondary, .btn-secondary:hover {
+    background-color: #e0f6eb;
+}
+
+.btn-secondary a:hover, .btn-secondary a:focus {
+    color: #fff;
+}
+
+</style>
+} {
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <header class="masthead mb-auto">
+            <div class="inner">
+                <h3 class="masthead-brand">Notre Mariage</h3>
+                <nav class="nav nav-masthead justify-content-center">
+                    <a href="@routes.TripController.index()" class="nav-link" href="#">Voyage de noce</a>
+                    <a class="nav-link" href="#">Liste de mariage</a>
+                </nav>
+            </div>
+        </header>
+
+        <main role="main" class="inner cover text-center">
+            <h1 class="cover-heading">Gwenaëlle & Eric</h1>
+
+            @if(when == 1) {
+            <p class="lead">Espèrent vous compter parmi leurs invités pour un vin d’honneur à partir de 16h30 suivi d’un diner au Salon du Vieux Saule, <a href="https://www.google.be/maps/place/Rue+Ferrer+220,+7080+Frameries/@@50.4047233,3.903219,17z/data=!3m1!4b1!4m5!3m4!1s0x47c25b0248f85b57:0x21f7fece094f5c23!8m2!3d50.4047233!4d3.9054077" target="_blank">220 rue Ferrer à 7080 Frameries</a>.</p>
+            } else if (when == 2) {
+            <p class="lead">Espèrent vous voir au vin d’honneur donné de 16h30 à 18h30 au Salon du Vieux Saule <a href="https://www.google.be/maps/place/Rue+Ferrer+220,+7080+Frameries/@@50.4047233,3.903219,17z/data=!3m1!4b1!4m5!3m4!1s0x47c25b0248f85b57:0x21f7fece094f5c23!8m2!3d50.4047233!4d3.9054077" target="_blank">220 rue Ferrer à 7080 Frameries</a>..</p>
+            } else if (when == 3) {
+            <p class="lead">Espèrent vous compter parmi leurs invités lors du repas servi à partir de 21h ainsi qu’à la soirée qui suivra au Salon du Vieux Saule, <a href="https://www.google.be/maps/place/Rue+Ferrer+220,+7080+Frameries/@@50.4047233,3.903219,17z/data=!3m1!4b1!4m5!3m4!1s0x47c25b0248f85b57:0x21f7fece094f5c23!8m2!3d50.4047233!4d3.9054077" target="_blank">220 rue Ferrer à 7080 Frameries</a>.</p>
+            } else {
+            <p class="lead">Vous invitent à fêter leur union le samedi 15 septembre 2018 à la <a href="https://www.google.be/maps/place/Maison+Communale+d'Anderlecht/@@50.8389947,4.3285364,18.25z/data=!4m13!1m7!3m6!1s0x47c3c40d7058a307:0x7d59e56798388459!2sPlace+du+Conseil,+1070+Anderlecht!3b1!8m2!3d50.8392116!4d4.3298297!3m4!1s0x47c3c40d9d4460f3:0x62a8f11a5606084e!8m2!3d50.8390737!4d4.32886" target="_blank">commune d'Anderlecht, place du conseil n°1</a></p>
+            <p class="lead">
+                <a href="@routes.HomeController.index(1)#card" class="btn btn-secondary my-2">Je suis invité toute la joutnée</a>
+                <a href="@routes.HomeController.index(2)#card" class="btn btn-secondary my-2">Je suis invité au vin d'honneur</a>
+                <a href="@routes.HomeController.index(3)#card" class="btn btn-secondary my-2">Je suis invité à la soirée</a>
+            </p>
+            }
+        </main>
+
+        <footer class="mastfoot mt-auto">
+            <div class="inner">
+                <p class="text-muted">Pas besoin de vaisselle ni de mobiblier, nous sommes déjà équipés. Nous vous proposons de participer au financement de notre <a href="@routes.TripController.index">voyage de noces</a></p>
+            </div>
+        </footer>
+    </div>
+} { }
