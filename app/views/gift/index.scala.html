@@ -1,0 +1,12 @@
+@(implicit assetsFinder: AssetsFinder)
+
+@main("Hello", assetsFinder) { } {
+    @partials.menu()
+
+    <h1>On est pas tout à fait prêt.</h1>
+    <form class="form" method="post" action="@routes.GiftController.keepInTouch">
+        <input type="text" name="email" placeholder="mon.adresse.email@@gmail.com" />
+        <input type="submit" />
+    </form>
+
+} { }

@@ -28,7 +28,7 @@ body {
 
 @@media (max-width: 576px) {
   body {
-    background: url('/assets/images/bg-mobile.jpg');
+    background: url('/assets/images/bg-mobile-2.jpg');
   }
 }
 
@@ -129,8 +129,8 @@ p a:visited {
             <div class="inner">
                 <h3 class="masthead-brand">Notre Mariage</h3>
                 <nav class="nav nav-masthead justify-content-center">
-                    <a href="@routes.TripController.index()" class="nav-link" href="#">Voyage de noce</a>
-                    <a class="nav-link" href="#">Liste de mariage</a>
+                    <a href="@routes.TripController.index()" class="nav-link">Voyage de noces</a>
+                    <a href="@routes.TripController.index()" class="nav-link">Liste de mariage</a>
                 </nav>
             </div>
         </header>
@@ -141,22 +141,23 @@ p a:visited {
             @if(when == 1) {
             <p class="lead">Espèrent vous compter parmi leurs invités pour un vin d’honneur à partir de 16h30 suivi d’un diner au Salon du Vieux Saule, <a href="https://www.google.be/maps/place/Rue+Ferrer+220,+7080+Frameries/@@50.4047233,3.903219,17z/data=!3m1!4b1!4m5!3m4!1s0x47c25b0248f85b57:0x21f7fece094f5c23!8m2!3d50.4047233!4d3.9054077" target="_blank">220 rue Ferrer à 7080 Frameries</a>.</p>
             } else if (when == 2) {
-            <p class="lead">Espèrent vous voir au vin d’honneur donné de 16h30 à 18h30 au Salon du Vieux Saule <a href="https://www.google.be/maps/place/Rue+Ferrer+220,+7080+Frameries/@@50.4047233,3.903219,17z/data=!3m1!4b1!4m5!3m4!1s0x47c25b0248f85b57:0x21f7fece094f5c23!8m2!3d50.4047233!4d3.9054077" target="_blank">220 rue Ferrer à 7080 Frameries</a>..</p>
+            <p class="lead">Espèrent vous compter parmi leurs invités au vin d’honneur donné de 16h30 à 18h30 au Salon du Vieux Saule <a href="https://www.google.be/maps/place/Rue+Ferrer+220,+7080+Frameries/@@50.4047233,3.903219,17z/data=!3m1!4b1!4m5!3m4!1s0x47c25b0248f85b57:0x21f7fece094f5c23!8m2!3d50.4047233!4d3.9054077" target="_blank">220 rue Ferrer à 7080 Frameries</a>.</p>
             } else if (when == 3) {
             <p class="lead">Espèrent vous compter parmi leurs invités lors du repas servi à partir de 21h ainsi qu’à la soirée qui suivra au Salon du Vieux Saule, <a href="https://www.google.be/maps/place/Rue+Ferrer+220,+7080+Frameries/@@50.4047233,3.903219,17z/data=!3m1!4b1!4m5!3m4!1s0x47c25b0248f85b57:0x21f7fece094f5c23!8m2!3d50.4047233!4d3.9054077" target="_blank">220 rue Ferrer à 7080 Frameries</a>.</p>
             } else {
-            <p class="lead">Vous invitent à fêter leur union le samedi 15 septembre 2018 à la <a href="https://www.google.be/maps/place/Maison+Communale+d'Anderlecht/@@50.8389947,4.3285364,18.25z/data=!4m13!1m7!3m6!1s0x47c3c40d7058a307:0x7d59e56798388459!2sPlace+du+Conseil,+1070+Anderlecht!3b1!8m2!3d50.8392116!4d4.3298297!3m4!1s0x47c3c40d9d4460f3:0x62a8f11a5606084e!8m2!3d50.8390737!4d4.32886" target="_blank">commune d'Anderlecht, place du conseil n°1</a></p>
+            <p class="lead">Vous invitent à fêter leur union le samedi 15 septembre 2018 à 14h30 à la <a href="https://www.google.be/maps/place/Maison+Communale+d'Anderlecht/@@50.8389947,4.3285364,18.25z/data=!4m13!1m7!3m6!1s0x47c3c40d7058a307:0x7d59e56798388459!2sPlace+du+Conseil,+1070+Anderlecht!3b1!8m2!3d50.8392116!4d4.3298297!3m4!1s0x47c3c40d9d4460f3:0x62a8f11a5606084e!8m2!3d50.8390737!4d4.32886" target="_blank">commune d'Anderlecht, place du Conseil n°1</a></p>
             <p class="lead">
-                <a href="@routes.HomeController.index(1)#card" class="btn btn-secondary my-2">Je suis invité toute la joutnée</a>
-                <a href="@routes.HomeController.index(2)#card" class="btn btn-secondary my-2">Je suis invité au vin d'honneur</a>
-                <a href="@routes.HomeController.index(3)#card" class="btn btn-secondary my-2">Je suis invité à la soirée</a>
+                <a href="@routes.HomeController.index(1)#card" class="btn btn-secondary my-2">Je suis invité(e) toute la journée</a>
+                <a href="@routes.HomeController.index(2)#card" class="btn btn-secondary my-2">Je suis invité(e) au vin d'honneur</a>
+                <a href="@routes.HomeController.index(3)#card" class="btn btn-secondary my-2">Je suis invité(e) à la soirée</a>
             </p>
             }
         </main>
 
         <footer class="mastfoot mt-auto">
             <div class="inner">
-                <p>Pas besoin de vaisselle ni de mobiblier, nous sommes déjà équipés. Nous vous proposons de participer au financement de notre <a href="@routes.TripController.index">voyage de noces</a></p>
+                <p class="text-center">Pas besoin de vaisselle ni de mobiblier, nous sommes déjà équipés. Nous vous proposons de participer au financement de notre <a href="@routes.TripController.index">voyage de noces</a></p>
+                <p class="text-center">BE09 3770 6004 5057</p>
             </div>
         </footer>
     </div>
