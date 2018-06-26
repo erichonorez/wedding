@@ -1,14 +1,29 @@
-@(trip: models.Trip)(implicit assetsFinder: AssetsFinder)
+@(trip: models.Trip)(implicit assetsFinder: AssetsFinder, flash: Flash)
 
-@main("Hello", assetsFinder) { } {
+@main("Hello", assetsFinder) {
+
+<link rel="stylesheet" media="screen" href="@assetsFinder.path("stylesheets/trip.css")">
+<link rel="stylesheet" media="screen" href="@assetsFinder.path("stylesheets/justifiedGallery.min.css")">
+
+} {
     @partials.menu()
+
+    @if(!flash.get("success").isEmpty) {
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <h4 class="alert-heading">On a bien enregistré ta demande!</h4>
+        <p>On te tiendra au courant très vite ;)</p>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    }
 
     <section class="jumbotron text-center">
         <div class="container">
         <h1 class="jumbotron-heading">Aidez-nous à voyager!</h1>
         <p class="lead text-muted">Pas besoin de vaisselle ni de mobiblier, nous sommes déjà équipés. Nous vous proposons de participer au financement de notre voyage de noces.</p>
         <p>
-            <a href="#" class="btn btn-primary my-2">Nous offrir un cadeau</a>
+            <a href="@controllers.routes.GiftController.index()" class="btn btn-primary my-2">Nous offrir un cadeau</a>
             <a href="#@trip.steps(0).slug" class="btn btn-secondary my-2">Voir notre parcours</a>
         </p>
         </div>
@@ -57,4 +72,9 @@
             }
         ];
     </script>
-} { }
+} {
+
+<script src="@assetsFinder.path("javascripts/jquery.justifiedGallery.min.js")"></script>
+<script src="@assetsFinder.path("javascripts/trip.js")"></script>
+
+}

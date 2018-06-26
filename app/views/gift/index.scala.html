@@ -1,12 +1,25 @@
-@(implicit assetsFinder: AssetsFinder)
+@(keepInTouchForm: Form[models.KeepInTouchFormData])(implicit assetsFinder: AssetsFinder, messagesProvider: MessagesProvider, request: RequestHeader, flash: Flash)
+
+@import helper._
 
 @main("Hello", assetsFinder) { } {
     @partials.menu()
 
-    <h1>On est pas tout à fait prêt.</h1>
-    <form class="form" method="post" action="@routes.GiftController.keepInTouch">
-        <input type="text" name="email" placeholder="mon.adresse.email@@gmail.com" />
-        <input type="submit" />
-    </form>
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">On est pas tout à fait prêt :(</h1>
+            <p class="lead text-muted">Cette partie du site en construction. Laisse nous ton adresse email et on t'avertira dès qu'elle sera prête.</p>
+            <div class="row justify-content-md-center">
+                <form class="col-md-6 form-inline" action="@routes.GiftController.keepInTouch()" method="post">
+                    @CSRF.formField
+                    <div class="form-group mx-sm-3 mb-2">
+                        <label for="email" class="sr-only">Email</label>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="example@@gmail.com"/>
+                    </div>
+                    <button type="submit" class="btn btn-primary mb-2">Je veux rester informé!</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
 } { }

@@ -8,12 +8,12 @@ import services.TripRepository
 class TripController @Inject()(tripRepository: TripRepository, cc: ControllerComponents)(implicit assetsFinder: AssetsFinder)
  extends AbstractController(cc) {
 
-    def index = Action {
+    def index = Action { implicit request =>
       val trip = tripRepository.get.get
       Ok(views.html.trip.index(trip))
     }
 
-    def step(slug: String) = Action { request =>
+    def step(slug: String) = Action { implicit request =>
       val trip = tripRepository.get.get
       val step = trip.steps.find(s => s.slug.equals(slug)).get
       Ok(views.html.trip.step(step, request.headers.get("referrer").getOrElse(routes.TripController.index().url)))

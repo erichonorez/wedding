@@ -1,6 +1,11 @@
-@(step: models.Step, referrer: String)(implicit assetsFinder: AssetsFinder)
+@(step: models.Step, referrer: String)(implicit assetsFinder: AssetsFinder, flash: Flash)
 
-@main("Hello", assetsFinder) { } {
+@main("Hello", assetsFinder) {
+
+<link rel="stylesheet" media="screen" href="@assetsFinder.path("stylesheets/trip.css")">
+<link rel="stylesheet" media="screen" href="@assetsFinder.path("stylesheets/justifiedGallery.min.css")">
+
+} {
 
 <div id="app" class="container content">
     <div class="row">
@@ -32,10 +37,13 @@
 </div>
 </div>
 } {
-    <script>
-        $('.back-btn').click(function(event) {
-            event.preventDefault();
-            window.history.back();
-        });
-    </script>
+<script src="@assetsFinder.path("javascripts/jquery.justifiedGallery.min.js")"></script>
+<script src="@assetsFinder.path("javascripts/trip.js")"></script>
+
+<script>
+    $('.back-btn').click(function(event) {
+        event.preventDefault();
+        window.history.back();
+    });
+</script>
 }
