@@ -1,0 +1,10 @@
+@(ref: String)(implicit assetsFinder: AssetsFinder, messagesProvider: MessagesProvider, request: RequestHeader, flash: Flash)
+
+@main("Confirmation", assetsFinder) { } {
+        @partials.menu()
+        <div class="container">
+            <h1>Merci!</h1>
+
+            <p>Quand tu feras ton versement sur le numéro de compte BE XXXXXXXXXXX renseigne le numéro de référence <strong>@ref</strong> afin que nous puissions retirer ce que tu as choisis de notre liste ;)</p>
+        </div>
+} { }

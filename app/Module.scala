@@ -1,6 +1,8 @@
 import com.google.inject.AbstractModule
 import java.time.Clock
 
+import models.gift.{Env, OrderRepository, ProductRepository}
+import services.gift.{RuntimeEnv, SQLOrderRepository, SQLProductRepository}
 import services.impl.TripFileSystemRepository
 import services.{ApplicationTimer, AtomicCounter, Counter, TripRepository}
 
@@ -26,6 +28,9 @@ class Module extends AbstractModule {
     bind(classOf[Counter]).to(classOf[AtomicCounter])
 
     bind(classOf[TripRepository]).to(classOf[TripFileSystemRepository])
+    bind(classOf[ProductRepository]).to(classOf[SQLProductRepository])
+    bind(classOf[OrderRepository]).to(classOf[SQLOrderRepository])
+    bind(classOf[Env]).to(classOf[RuntimeEnv])
   }
 
 }

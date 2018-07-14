@@ -18,3 +18,8 @@ libraryDependencies += "com.vladsch.flexmark" % "flexmark-all" % "0.32.24"
 libraryDependencies += "io.circe" %% "circe-yaml" % "0.6.1"
 libraryDependencies += "org.playframework.anorm" %% "anorm" % "2.6.1"
 libraryDependencies += "org.xerial" % "sqlite-jdbc" % "3.23.1"
+libraryDependencies ++= Seq(
+  "ch.qos.logback"  %  "logback-classic"    % "1.2.3",
+  "com.typesafe.play" %% "anorm" % "2.5.1"
+)
+

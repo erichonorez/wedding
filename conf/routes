@@ -13,7 +13,12 @@ GET     /trip                       controllers.TripController.index
 GET     /trip/:slug                 controllers.TripController.step(slug)
 
 GET     /gift                       controllers.GiftController.index
+GET     /gift/cart                  controllers.GiftController.cart
 POST    /gift/keep-in-touch         controllers.GiftController.keepInTouch
+POST    /gift/add-to-cart           controllers.GiftController.addToCart
+POST    /gift/confirm-cart          controllers.GiftController.confirmCart
+POST    /gift/remove-from-cart      controllers.GiftController.removeFromCart
+GET     /gift/confirmation          controllers.GiftController.confirmation(orderId: String)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(file)

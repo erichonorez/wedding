@@ -1,0 +1,14 @@
+@(itemsCount: Int)
+
+<header>
+    <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+            <a href="@routes.HomeController.index()" class="navbar-brand d-flex align-items-center">
+                <strong>Notre mariage</strong>
+            </a>
+            <nav class="nav nav-masthead justify-content-center">
+                <a href="@routes.GiftController.cart()">Panier <i class="fas fa-shopping-cart"></i> <span class="badge badge-primary">@itemsCount</span></a>
+            </nav>
+        </div>
+    </div>
+</header>

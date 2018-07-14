@@ -1,0 +1,51 @@
+@(products: List[models.gift.AllProductView], itemCount: Int)(implicit assetsFinder: AssetsFinder, messagesProvider: MessagesProvider, request: RequestHeader, flash: Flash)
+
+@import helper._
+
+@main("Liste de mariage", assetsFinder) { } {
+
+<div class="container-fluid">
+    @menuWithCart(itemCount)
+
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Aidez-nous à voyager!</h1>
+            <p class="lead text-muted">Pas besoin de vaisselle ni de mobiblier, nous sommes déjà équipés. Nous vous proposons de participer au financement de notre voyage de noces.</p>
+            <p class="lead text-muted">Voici qu'est-ce qu'on a besoin:</p>
+        </div>
+    </section>
+    <div class="container">
+        <div class="card-deck mb-3 text-center">
+            @for(product <- products) {
+            <div class="card mb-4 box-shadow">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">@product.name</h4>
+                </div>
+                <img class="card-img-top" src="https://buzz-ultra.com/wp-content/uploads/2018/01/astuce-avion-voyage-voyager.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">@product.price €</h1>
+                    @product.description
+                </div>
+                <div class="card-footer">
+                    @if(product.itemsAvailableCount == 0) {
+                        @if(product.itemsWaitingForOrderConfirmationCount > 0) {
+                        <button type="button" class="btn btn-lg btn-block btn-primary" disabled>Réservé</button>
+                        } else {
+                        <button type="button" class="btn btn-lg btn-block" disabled>Plus disponible</button>
+                        }
+                    } else {
+                    <form method="POST" action="@routes.GiftController.addToCart">
+                        @CSRF.formField
+                        <input type="hidden" name="id" value="@product.id">
+                        <button type="submit" class="btn btn-lg btn-block btn-primary">Ajouter au panier</button>
+                    </form>
+                    }
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</div>
+</div>
+
+} { }
