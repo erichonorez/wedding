@@ -15,78 +15,6 @@ class GiftController @Inject()(env: Env, cc: ControllerComponents)(implicit asse
     with I18nSupport
     with Webshop {
 
-//  val env = new Env {
-//    override val productRepository: ProductRepository = new ProductRepository {
-//
-//      private val products: mutable.MutableList[Product] = mutable.MutableList()
-//
-//      override def all: List[Product] = products.toList
-//
-//      override def find(id: String): Option[Product] = products.find(_.id == id)
-//
-//      override def persist(product: Product): Option[Product] = {
-//        products += product
-//        Some(product)
-//      }
-//    }
-//    override val orderRepository: OrderRepository = new OrderRepository {
-//
-//      private val orders: mutable.MutableList[Order] = mutable.MutableList()
-//
-//      override def persist(order: Order): Option[Order] = {
-//        orders += order
-//        Some(order)
-//      }
-//
-//      override def update(o: Order): Option[Order] = orders.find(_.id == o.id).map(foundO => {
-//        val i = orders.indexOf(foundO)
-//        orders.update(i, o)
-//        o
-//      })
-//
-//      override def find(id: String): Option[Order] = orders.find(_.id == id)
-//
-//      override def findByProductId(id: String): List[Order] = orders.filter(_.items.exists(_.productId == id)).toList
-//
-//      override def count = orders.size
-//    }
-//  }
-//
-//  val productId1 = createProduct(
-//    "1 mile d'avion",
-//    0.25,
-//    "Notre voyage en avion compte plus de 11,000 miles!",
-//    None,
-//    11000
-//  )(env).get.id
-//
-//  val productId2 = createProduct(
-//    "1 mile d'avion",
-//    0.25,
-//    "Notre voyage en avion compte plus de 11,000 miles!",
-//    None,
-//    11000
-//  )(env).get.id
-//  createOrder(List(productId2 -> 11000))(env)
-//
-//  val productId3 = createProduct(
-//    "1 mile d'avion",
-//    0.25,
-//    "Notre voyage en avion compte plus de 11,000 miles!",
-//    None,
-//    11000
-//  )(env).get.id
-//  val orderId = createOrder(List(productId3 -> 11000))(env).get.id
-//  confirmOrder(orderId)(env)
-//
-//  val productId4 = createProduct(
-//    "1 mile d'avion",
-//    0.25,
-//    "Notre voyage en avion compte plus de 11,000 miles!",
-//    None,
-//    11000
-//  )(env)
-
   def index = Action { implicit  request =>
     val products = findAllProducts(env)
 
@@ -122,27 +50,12 @@ class GiftController @Inject()(env: Env, cc: ControllerComponents)(implicit asse
     Ok(views.html.gift.cart(products, total))
   }
 
-  private def cartTotalAmount(products: List[AllProductView]) = {
-    val total = products match {
-      case Nil => 0
-      case xs => xs.map(_.price).reduce(_ + _)
-    }
-    total
-  }
-
-  private def productsInCart(implicit request: Request[AnyContent]) = {
-    val products: List[AllProductView] = cartInSession(request).map(productId => findProductById(productId)(env))
-      .filter(!_.isEmpty)
-      .map(_.get)
-    products
-  }
-
   def confirmCart = Action { implicit request =>
     confirmCartForm.bindFromRequest().fold(formWithError => {
       val products = productsInCart
       BadRequest(views.html.gift.cart(products, cartTotalAmount(products)))
     }, form => {
-      val tuples = form.items.map(item => (item.id -> item.quantity))
+      val tuples = form.ids zip form.quantities
       (createOrder(tuples)(env)).fold({
         val products = productsInCart
         BadRequest(views.html.gift.cart(products, cartTotalAmount(products)))
@@ -169,20 +82,22 @@ class GiftController @Inject()(env: Env, cc: ControllerComponents)(implicit asse
   }
 
   def keepInTouch = Action { implicit  request =>
-//    keepInTouchForm.bindFromRequest().fold(formWithError => {
-//      BadRequest(views.html.gift.index(formWithError))
-//    }, form => {
-//        db.withConnection { implicit c =>
-//          SQL("insert into KEEP_IN_TOUCH_REQUESTS (email) values ({email})")
-//            .on("email" -> form.email)
-//            .executeInsert()
-//        }
-//
-//      Redirect(controllers.routes.TripController.index())
-//        .flashing(
-//          "success" -> "On a bien enregistré ta demande, on te tiendra au courant très vite ;)")
-//    } )
     NotFound("Not found")
+  }
+
+  private def cartTotalAmount(products: List[AllProductView]) = {
+    val total = products match {
+      case Nil => 0
+      case xs => xs.map(_.price).reduce(_ + _)
+    }
+    total
+  }
+
+  private def productsInCart(implicit request: Request[AnyContent]) = {
+    val products: List[AllProductView] = cartInSession(request).map(productId => findProductById(productId)(env))
+      .filter(!_.isEmpty)
+      .map(_.get)
+    products
   }
 
   private def keepInTouchForm = Form(
@@ -190,7 +105,7 @@ class GiftController @Inject()(env: Env, cc: ControllerComponents)(implicit asse
       "email" -> email
     )(KeepInTouchFormData.apply)(KeepInTouchFormData.unapply)
   )
-0
+
   private def addToCartForm = Form(
     mapping(
       "id" -> nonEmptyText(36, 36)
@@ -205,17 +120,12 @@ class GiftController @Inject()(env: Env, cc: ControllerComponents)(implicit asse
 
   private def confirmCartForm = Form(
     mapping(
-      "items" -> list(
-        mapping(
-          "id" -> nonEmptyText(36, 36),
-          "quantity" -> number(0)
-        )(CartItemData.apply)(CartItemData.unapply)
-      )
+      "id" -> list(nonEmptyText(36, 36)),
+      "quantity" -> list(number(0))
     )(CartData.apply)(CartData.unapply)
   )
 
   case class AddToCartFormData(id: String)
   case class RemoveFromCartFormData(id: String)
-  case class CartItemData(id: String, quantity: Int)
-  case class CartData(items: List[CartItemData])
+  case class CartData(ids: List[String], quantities: List[Int])
 }

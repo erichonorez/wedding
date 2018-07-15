@@ -11,7 +11,7 @@ class SQLOrderRepository @Inject() (implicit db: Database) extends OrderReposito
 
   override def persist(order: Order) = {
     db.withConnection { implicit c => {
-      val isSuccessful = SQL(
+      SQL(
         """
           INSERT INTO ORDERS (ID, REF, CONFIRMED)
           VALUES ({id}, {ref}, {confirmed})
@@ -20,20 +20,18 @@ class SQLOrderRepository @Inject() (implicit db: Database) extends OrderReposito
         'ref        -> order.ref,
         'confirmed  -> order.confirmed
       ).execute()
-      if (isSuccessful) {
-        order.items.foreach(item => {
-          SQL(
-            """
-              INSERT INTO ORDER_ITEMS (ORDER_ID, PRODUCT_ID, QUANTITY)
-              VALUES ({orderId}, {productId}, {quantity})
-            """).on(
-            'orderId      -> order.id,
-            'productId    -> item.productId,
-            'quantity     -> item.quantity
-          ).execute()
-        })
-        Some(order)
-      } else { None }
+      order.items.foreach(item => {
+        SQL(
+          """
+            INSERT INTO ORDER_ITEMS (ORDER_ID, PRODUCT_ID, QUANTITY)
+            VALUES ({orderId}, {productId}, {quantity})
+          """).on(
+          'orderId      -> order.id,
+          'productId    -> item.productId,
+          'quantity     -> item.quantity
+        ).execute()
+      })
+      Some(order)
     } }
   }
 
@@ -86,12 +84,12 @@ class SQLOrderRepository @Inject() (implicit db: Database) extends OrderReposito
     db.withConnection { implicit c => {
       val orderIds = SQL(
         """
-        SELECT o.ID FROM ORDERS o
-        JOIN ORDER_ITEMS i on o.ID = i.ORDER_ID
-        WHERE i.PRODUCT_ID = {productId}
+        SELECT ORDERS.ID FROM ORDERS
+        JOIN ORDER_ITEMS on ORDERS.ID = ORDER_ITEMS.ORDER_ID
+        WHERE ORDER_ITEMS.PRODUCT_ID = {productId}
       """).on(
         'productId -> id
-      ).as(SqlParser.str("o.ID").*)
+      ).as(SqlParser.str("ORDERS.ID").*)
 
       orderIds.map(find(_)).filter(!_.isEmpty).map(_.get)
     } }

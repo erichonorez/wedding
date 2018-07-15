@@ -2,57 +2,73 @@
 
 @import helper._
 
-@main("Panier", assetsFinder) { } {
+@main("Panier", assetsFinder) {
 
-<div class="container-fluid">
+<style>
+.cart-content {
+    margin-top: 50px;
+}
+</style>
+
+} {
+
     @menuWithCart(products.size)
 
     <div class="container">
-        <h1>Mon panier</h1>
-        <form>
-            @CSRF.formField
-            <button type="submit" formmethod="post" formaction="@routes.GiftController.confirmCart" class="btn btn-success float-right">Confirmer <i class="fa fa-angle-right"></i></button>
+        <div class="row cart-content">
+            <div class="col-md-12">
 
-            <table class="table table-sm">
-                <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Article</th>
-                    <th scope="col">Quantité</th>
-                    <th scope="col">Prix</th>
-                    <th scope="col">Total</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                @for(product <- products) {
-                <tr>
-                    <input type="hidden" name="id[]" value="@product.id"/>
-                    <th scope="row">1</th>
-                    <td>@product.name</td>
-                    <td><input class="form-control product-item-count" type="number" name="quantity[]" value="1" max="@product.itemsAvailableCount" min="0" data-price="@product.price" data-product-id="@product.id"/> (max: @product.itemsAvailableCount)</td>
-                    <td>@product.price €</td>
-                    <td><span id="product-item-total-@product.id">@product.price</span> €</td>
-                    <td>
-                        <button type="button" class="btn btn-danger btn-sm delete-item" data-product-id="@product.id">Supprimer</button>
-                    </td>
-                </tr>
-                }
-                </tbody>
-                <tfoot>
-                <tr class="visible-xs">
-                    <td colspan="4" class="text-right">Total</td>
-                    <td colspan="2"><strong><span id="total">@total</span> €</strong></td>
-                </tr>
-                </tfoot>
-            </table>
-        </form>
-        <form id="productToDeleteForm" method="post" action="@routes.GiftController.removeFromCart">
-            @CSRF.formField
-            <input id="productToDeleteInput" type="hidden" name="id" value="" />
-        </form>
+                <h1>Mon panier</h1>
+                <form method="post" action="@routes.GiftController.confirmCart">
+                    @CSRF.formField
+
+                    <div class="form-group">
+                    <a href="@routes.GiftController.index()" class="btn btn-primary">Retour à la liste</a>
+                    <button type="submit" class="btn btn-success float-right" @if(products.size == 0) { disabled="true" }>Confirmer <i class="fa fa-angle-right"></i></button>
+                    </div>
+
+                    <table class="table table-sm">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Article</th>
+                            <th scope="col">Quantité</th>
+                            <th scope="col">Prix</th>
+                            <th scope="col">Total</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @for(product <- products) {
+                        <tr>
+                            <input type="hidden" name="id[]" value="@product.id"/>
+                            <th scope="row">1</th>
+                            <td>@product.name</td>
+                            <td><input class="form-control product-item-count" type="number" name="quantity[]" value="1" max="@product.itemsAvailableCount" min="0" data-price="@product.price" data-product-id="@product.id"/> (max: @product.itemsAvailableCount)</td>
+                            <td>@product.price €</td>
+                            <td><span id="product-item-total-@product.id">@product.price</span> €</td>
+                            <td>
+                                <button type="button" class="btn btn-danger btn-sm delete-item" data-product-id="@product.id">Supprimer</button>
+                            </td>
+                        </tr>
+                        }
+                        </tbody>
+                        <tfoot>
+                        <tr class="visible-xs">
+                            <td colspan="4" class="text-right">Total</td>
+                            <td colspan="2"><strong><span id="total">@total</span> €</strong></td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </form>
+                <form id="productToDeleteForm" method="post" action="@routes.GiftController.removeFromCart">
+                    @CSRF.formField
+                    <input id="productToDeleteInput" type="hidden" name="id" value="" />
+                </form>
+
+            </div>
+        </div>
     </div>
-</div>
 
 } {
 
